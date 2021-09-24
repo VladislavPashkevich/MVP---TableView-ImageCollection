@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1t2-l7-yzn">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Screen View Controller-->
+        <scene sceneID="rpV-mr-Pav">
+            <objects>
+                <viewController storyboardIdentifier="MainScreenViewController" id="1t2-l7-yzn" customClass="MainScreenViewController" customModule="Home_Work_MVP___TableView_ImageCollection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dHv-Ld-GZd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ev5-hh-ZGu">
+                                <rect key="frame" x="21" y="812" width="372" height="34"/>
+                                <color key="backgroundColor" red="0.26666666666666666" green="0.84313725490196079" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <state key="normal" title="Добавить фото">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addPhoto" destination="1t2-l7-yzn" eventType="touchUpInside" id="uph-dJ-d7W"/>
+                                </connections>
+                            </button>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V4E-bq-2NS">
+                                <rect key="frame" x="0.0" y="100" width="414" height="706"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1t2-l7-yzn" id="MwK-Qn-UJb"/>
+                                    <outlet property="delegate" destination="1t2-l7-yzn" id="UR7-oT-m4D"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет фотографий" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="400-xW-JWh">
+                                <rect key="frame" x="46" y="444" width="322" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lO1-Lq-3c2"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lO1-Lq-3c2" firstAttribute="trailing" secondItem="Ev5-hh-ZGu" secondAttribute="trailing" constant="21" id="4i6-mP-evt"/>
+                            <constraint firstItem="400-xW-JWh" firstAttribute="top" secondItem="lO1-Lq-3c2" secondAttribute="top" constant="400" id="Dv3-bg-1K4"/>
+                            <constraint firstItem="V4E-bq-2NS" firstAttribute="top" secondItem="lO1-Lq-3c2" secondAttribute="top" constant="56" id="I30-LT-bII"/>
+                            <constraint firstItem="lO1-Lq-3c2" firstAttribute="trailing" secondItem="V4E-bq-2NS" secondAttribute="trailing" id="Jiw-X7-pm5"/>
+                            <constraint firstItem="lO1-Lq-3c2" firstAttribute="trailing" secondItem="400-xW-JWh" secondAttribute="trailing" constant="46" id="MM4-qK-tz1"/>
+                            <constraint firstItem="V4E-bq-2NS" firstAttribute="leading" secondItem="lO1-Lq-3c2" secondAttribute="leading" id="Ylz-Uq-RKf"/>
+                            <constraint firstItem="lO1-Lq-3c2" firstAttribute="bottom" secondItem="Ev5-hh-ZGu" secondAttribute="bottom" constant="16" id="ZrZ-hk-65W"/>
+                            <constraint firstItem="Ev5-hh-ZGu" firstAttribute="top" secondItem="V4E-bq-2NS" secondAttribute="bottom" constant="6" id="fVx-5r-TNg"/>
+                            <constraint firstItem="Ev5-hh-ZGu" firstAttribute="leading" secondItem="lO1-Lq-3c2" secondAttribute="leading" constant="21" id="hTd-Lg-Gky"/>
+                            <constraint firstItem="400-xW-JWh" firstAttribute="leading" secondItem="lO1-Lq-3c2" secondAttribute="leading" constant="46" id="w9M-eN-9Us"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="labelTextNoPhoto" destination="400-xW-JWh" id="wL8-gF-800"/>
+                        <outlet property="tableView" destination="V4E-bq-2NS" id="JLz-J6-Z1f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J7B-uH-bVm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="111.59420289855073" y="88.392857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
