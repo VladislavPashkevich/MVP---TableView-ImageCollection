@@ -26,6 +26,7 @@ class StartScreenViewController: UIViewController {
 
         presenter.view = self
         presenter.viewDidLoad()
+
     }
     
     @IBAction func pressLoginButton() {
@@ -40,8 +41,14 @@ extension StartScreenViewController: StartScreenViewProtocol {
     }
     
     func showMainScreen() {
-        let storyboard = UIStoryboard(name: "Storyboard", bundle: Bundle.main)
+        let storyboard = UIStoryboard(name: "MainScreen", bundle: Bundle.main)
         guard let mainScreen = storyboard.instantiateViewController(identifier: "MainScreenViewController") as? MainScreenViewController else { return }
-        present(mainScreen, animated: true, completion: nil)
+        navigationController?.pushViewController(mainScreen, animated: true)
     }
 }
+
+
+
+
+
+

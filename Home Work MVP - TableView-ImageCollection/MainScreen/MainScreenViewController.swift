@@ -10,6 +10,10 @@
 import UIKit
 // MARK: View -
 protocol MainScreenViewProtocol: AnyObject {
+        
+    func addElementToTableView(to indexPath: IndexPath)
+    
+    func removeElementToTableView(to indexPath: IndexPath)
 
 }
 
@@ -17,15 +21,16 @@ class MainScreenViewController: UIViewController {
     
     @IBOutlet private weak var labelTextNoPhoto: UILabel!
     @IBOutlet private weak var tableView: UITableView!
+        
+    
 
 	var presenter: MainScreenPresenterProtocol = MainScreenPresenter()
-
+    
 	override func viewDidLoad() {
         super.viewDidLoad()
 
         presenter.view = self
         presenter.viewDidLoad()
-        
         
         tableView.register(UINib(nibName: "TableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "TableViewCell")
         
@@ -35,11 +40,23 @@ class MainScreenViewController: UIViewController {
     }
     
     @IBAction func addPhoto() {
-        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
 extension MainScreenViewController: MainScreenViewProtocol {
+    
+    func addElementToTableView(to indexPath: IndexPath) {
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    func removeElementToTableView(to indexPath: IndexPath) {
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
     
 }
 
@@ -47,23 +64,36 @@ extension MainScreenViewController: UITableViewDelegate {
     
 }
 
+
+
 extension MainScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return presenter.numberOfElementsImagePickerArray()
     }
     
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
-        
+        cell.update(with: presenter.elementInImagePickerArray(for: indexPath))
         return cell
     }
     
-   
-    
-   
-    
-   
-    
-    
 }
+
+
+
+extension MainScreenViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[.originalImage] as? UIImage else {
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        guard let imageData = image.pngData() else { return }
+        presenter.addNewElementArray(data: imageData)
+    }
+}
+
+
+
+

@@ -13,13 +13,39 @@ import Foundation
 protocol MainScreenPresenterProtocol {
 	var view: MainScreenViewProtocol? { get set }
     func viewDidLoad()
+    
+    func addNewElementArray(data: Data)
+    func removeElementArray(for indexPath: IndexPath)
+    func numberOfElementsImagePickerArray() -> Int
+    func elementInImagePickerArray(for indexPath: IndexPath) -> Data
 }
 
 class MainScreenPresenter: MainScreenPresenterProtocol {
 
     weak var view: MainScreenViewProtocol?
+    
+    private var imagePickerArray: [Data] = []
 
     func viewDidLoad() {
 
+    }
+    
+    func addNewElementArray(data: Data) {
+        imagePickerArray.append(data)
+        view?.addElementToTableView(to: IndexPath(
+            row: numberOfElementsImagePickerArray() - 1,
+            section: 0))
+    }
+    
+    func removeElementArray(for indexPath: IndexPath) {
+        imagePickerArray.remove(at: indexPath.row)
+        view?.removeElementToTableView(to: indexPath)
+    }
+    
+    func numberOfElementsImagePickerArray() -> Int {
+        return imagePickerArray.count
+    }
+    func elementInImagePickerArray(for indexPath: IndexPath) -> Data {
+        return imagePickerArray[indexPath.row]
     }
 }

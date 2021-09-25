@@ -12,4 +12,8 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet private weak var imageViewCell: UIImageView!
     
+    func update(with data: Data) {
+        
+        imageViewCell.image = UIImage(data: data)
+    }
 }
