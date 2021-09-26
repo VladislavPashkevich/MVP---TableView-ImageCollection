@@ -14,6 +14,10 @@ protocol MainScreenViewProtocol: AnyObject {
     func addElementToTableView(to indexPath: IndexPath)
     
     func removeElementToTableView(to indexPath: IndexPath)
+    
+    func trueIsHiddenLabelTextNoPhoto()
+    
+    func falseIsHiddenLabelTextNoPhoto()
 
 }
 
@@ -57,11 +61,28 @@ extension MainScreenViewController: MainScreenViewProtocol {
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
+    func trueIsHiddenLabelTextNoPhoto() {
+        labelTextNoPhoto.isHidden = true
+    }
+    
+    func falseIsHiddenLabelTextNoPhoto() {
+        labelTextNoPhoto.isHidden = false
+    }
     
 }
 
 extension MainScreenViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let configuration = UISwipeActionsConfiguration(actions: [
+            UIContextualAction(
+                style: .destructive,
+                title: "Delete",
+                handler: { _, _, _ in
+                    self.presenter.removeElementArray(for: indexPath)
+                })
+        ])
+        return configuration
+    }
 }
 
 

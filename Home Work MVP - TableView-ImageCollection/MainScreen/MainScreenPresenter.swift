@@ -18,6 +18,7 @@ protocol MainScreenPresenterProtocol {
     func removeElementArray(for indexPath: IndexPath)
     func numberOfElementsImagePickerArray() -> Int
     func elementInImagePickerArray(for indexPath: IndexPath) -> Data
+    
 }
 
 class MainScreenPresenter: MainScreenPresenterProtocol {
@@ -35,11 +36,15 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
         view?.addElementToTableView(to: IndexPath(
             row: numberOfElementsImagePickerArray() - 1,
             section: 0))
+        view?.trueIsHiddenLabelTextNoPhoto()
     }
     
     func removeElementArray(for indexPath: IndexPath) {
         imagePickerArray.remove(at: indexPath.row)
         view?.removeElementToTableView(to: indexPath)
+        if imagePickerArray.count == 0 {
+            view?.falseIsHiddenLabelTextNoPhoto()
+        }
     }
     
     func numberOfElementsImagePickerArray() -> Int {
@@ -48,4 +53,6 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     func elementInImagePickerArray(for indexPath: IndexPath) -> Data {
         return imagePickerArray[indexPath.row]
     }
+    
+   
 }
