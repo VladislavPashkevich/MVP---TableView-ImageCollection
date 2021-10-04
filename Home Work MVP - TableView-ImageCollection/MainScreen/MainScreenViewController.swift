@@ -18,6 +18,8 @@ protocol MainScreenViewProtocol: AnyObject {
     func trueIsHiddenLabelTextNoPhoto()
     
     func falseIsHiddenLabelTextNoPhoto()
+    
+    func reloadTableView()
 
 }
 
@@ -69,6 +71,10 @@ extension MainScreenViewController: MainScreenViewProtocol {
         labelTextNoPhoto.isHidden = false
     }
     
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+    
 }
 
 extension MainScreenViewController: UITableViewDelegate {
@@ -109,7 +115,8 @@ extension MainScreenViewController: UINavigationControllerDelegate, UIImagePicke
         guard let image = info[.originalImage] as? UIImage else {
             return
         }
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        //код добавляет в галерию выбранную фотографию
+//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         guard let imageData = image.pngData() else { return }
         presenter.addNewElementArray(data: imageData)
     }

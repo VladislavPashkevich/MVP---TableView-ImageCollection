@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		560FF0B426FFBBAB0003C6A5 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560FF0B326FFBBAB0003C6A5 /* Image+Extensions.swift */; };
+		566E6CF92709E7DE00FEB059 /* Home Work MVP - TableView-ImageCollection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 566E6CF72709E7DE00FEB059 /* Home Work MVP - TableView-ImageCollection.xcdatamodeld */; };
+		566E6D012709E8FE00FEB059 /* ArrayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566E6CFF2709E8FE00FEB059 /* ArrayData.swift */; };
+		566E6D042709EAD500FEB059 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566E6D032709EAD500FEB059 /* CoreDataService.swift */; };
 		5670E06426FC8205004E014F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670E06326FC8205004E014F /* AppDelegate.swift */; };
 		5670E06626FC8205004E014F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670E06526FC8205004E014F /* SceneDelegate.swift */; };
 		5670E06D26FC8206004E014F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5670E06C26FC8206004E014F /* Assets.xcassets */; };
@@ -24,6 +27,9 @@
 
 /* Begin PBXFileReference section */
 		560FF0B326FFBBAB0003C6A5 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
+		566E6CF82709E7DE00FEB059 /* Home Work MVP - TableView-ImageCollection.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Home Work MVP - TableView-ImageCollection.xcdatamodel"; sourceTree = "<group>"; };
+		566E6CFF2709E8FE00FEB059 /* ArrayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayData.swift; path = "Home Work MVP - TableView-ImageCollection/ArrayData.swift"; sourceTree = SOURCE_ROOT; };
+		566E6D032709EAD500FEB059 /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		5670E06026FC8205004E014F /* Home Work MVP - TableView-ImageCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Work MVP - TableView-ImageCollection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5670E06326FC8205004E014F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5670E06526FC8205004E014F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		566E6CFE2709E8E800FEB059 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				566E6CFF2709E8FE00FEB059 /* ArrayData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		566E6D052709EB1000FEB059 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				566E6D032709EAD500FEB059 /* CoreDataService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		5670E05726FC8205004E014F = {
 			isa = PBXGroup;
 			children = (
@@ -70,14 +92,17 @@
 		5670E06226FC8205004E014F /* Home Work MVP - TableView-ImageCollection */ = {
 			isa = PBXGroup;
 			children = (
-				567E34E326FDDE790039A270 /* Views */,
 				5670E06326FC8205004E014F /* AppDelegate.swift */,
-				5670E07E26FC83B4004E014F /* Extensions */,
+				566E6D052709EB1000FEB059 /* Service */,
 				5670E06526FC8205004E014F /* SceneDelegate.swift */,
+				566E6CFE2709E8E800FEB059 /* Models */,
+				567E34E326FDDE790039A270 /* Views */,
+				5670E07E26FC83B4004E014F /* Extensions */,
 				567E34D526FDD8D40039A270 /* StartScreen */,
 				567E34DC26FDD9F40039A270 /* MainScreen */,
 				5670E06C26FC8206004E014F /* Assets.xcassets */,
 				5670E07126FC8206004E014F /* Info.plist */,
+				566E6CF72709E7DE00FEB059 /* Home Work MVP - TableView-ImageCollection.xcdatamodeld */,
 			);
 			path = "Home Work MVP - TableView-ImageCollection";
 			sourceTree = "<group>";
@@ -195,8 +220,11 @@
 				560FF0B426FFBBAB0003C6A5 /* Image+Extensions.swift in Sources */,
 				5670E06426FC8205004E014F /* AppDelegate.swift in Sources */,
 				567E34E726FDDEB00039A270 /* TableViewCell.swift in Sources */,
+				566E6CF92709E7DE00FEB059 /* Home Work MVP - TableView-ImageCollection.xcdatamodeld in Sources */,
+				566E6D042709EAD500FEB059 /* CoreDataService.swift in Sources */,
 				5670E06626FC8205004E014F /* SceneDelegate.swift in Sources */,
 				567E34E226FDDA0D0039A270 /* MainScreenViewController.swift in Sources */,
+				566E6D012709E8FE00FEB059 /* ArrayData.swift in Sources */,
 				5670E08026FC83C9004E014F /* View+Extensions.swift in Sources */,
 				567E34DA26FDD9BB0039A270 /* StartScreenPresenter.swift in Sources */,
 				567E34DB26FDD9BB0039A270 /* StartScreenViewController.swift in Sources */,
@@ -381,6 +409,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		566E6CF72709E7DE00FEB059 /* Home Work MVP - TableView-ImageCollection.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				566E6CF82709E7DE00FEB059 /* Home Work MVP - TableView-ImageCollection.xcdatamodel */,
+			);
+			currentVersion = 566E6CF82709E7DE00FEB059 /* Home Work MVP - TableView-ImageCollection.xcdatamodel */;
+			path = "Home Work MVP - TableView-ImageCollection.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5670E05826FC8205004E014F /* Project object */;
 }
