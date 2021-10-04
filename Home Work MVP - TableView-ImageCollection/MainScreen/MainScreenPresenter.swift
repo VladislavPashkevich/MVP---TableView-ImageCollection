@@ -50,7 +50,8 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
         DatabaseService.shared.insertEntityFor(
             type: ArrayData.self,
             context: DatabaseService.shared.persistentContainer.mainContext,
-            closure: { arrayDataCore in
+            closure: { [weak self] arrayDataCore in
+                guard let self =  self else { return }
                 arrayDataCore.imageArrayData = NSData(data: data)
                 
                 DatabaseService.shared.saveMain({
@@ -67,7 +68,8 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     
     func removeElementArray(for indexPath: IndexPath) {
         
-        DatabaseService.shared.delete(imagesPickerArray[indexPath.row], context: DatabaseService.shared.persistentContainer.mainContext, closure: { _ in
+        DatabaseService.shared.delete(imagesPickerArray[indexPath.row], context: DatabaseService.shared.persistentContainer.mainContext, closure: { [weak self] _ in
+            guard let self =  self else { return }
             DatabaseService.shared.saveMain({
                 self.imagesPickerArray.remove(at: indexPath.row)
                 self.view?.removeElementToTableView(to: indexPath)
